@@ -1,3 +1,10 @@
+<?php
+require "back/conect.php";
+$result_esc = "SELECT * FROM escola";
+$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,14 +62,14 @@
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
+       Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
                <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="../../dash.php" class="nav-link">
                   <i class="fas fa-home nav-icon"></i>
                   <p>Início</p>
                 </a>
@@ -172,11 +179,14 @@
             <div class="card-body">
               <div class="form-group">
                 <label>* Escola</label>
-                  <select class="form-control select2" style="width: 100%;" name="nomeescola" required>
+                  <select class="form-control select2" style="width: 100%;" name="nomeescola" require>
                     <option selected="selected">Selecione</option>
-                    <option>João Correia de Melo</option>
-                    <option>Cordeiro Filho</option>
-                    <option>Antonio Monteiro de Melo</option>
+                    <?php
+                        while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
+                            $nomeescola = $row_esc["nomeescola"];
+                    ?>
+                        <option value="<?php echo $nomeescola; ?>"><?php echo $nomeescola; ?></option>
+                    <?php } ?>
                   </select>
               </div>
               <div class="form-group">
@@ -185,7 +195,7 @@
               </div>
               <div class="form-group">
                 <label for="inputName">* Ano Letivo</label>
-                <input type="number" id="inputName" name="anoletivo" class="form-control" required>
+                <input type="number" id="inputName" name="anoletivo" class="form-control" required min="2020">
               </div>
             </div>
 

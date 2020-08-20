@@ -201,7 +201,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/examples/cadalunos.html" class="nav-link">
+                <a href="./pages/examples/cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>

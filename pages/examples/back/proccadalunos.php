@@ -49,7 +49,7 @@ VALUES ('$escola','$turma','$nomealuno','$dtnascimento','$idadebd','$sexo','$pes
 '$imc','$percentil','$estnutricional')";
 
 if (mysqli_query($con, $sql)) {
-    echo "<script>alert('Registro Salvo com Sucesso!');window.location.href = '../cadalunos.html';</script>";
+    echo "<script>alert('Registro Salvo com Sucesso!');window.location.href = '../cadalunos.php';</script>";
 } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
 }
