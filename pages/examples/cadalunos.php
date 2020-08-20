@@ -1,3 +1,11 @@
+<?php
+require "back/conect.php";
+$result_esc = "SELECT * FROM escola order by nomeescola asc";
+$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,20 +180,21 @@
             <div class="card-body">
               <div class="form-group">
                 <label>* Escola</label>
-                  <select name="escola" class="form-control select2" style="width: 100%;" required>
+                  <select name="escola" id="escolas" class="form-control select2" style="width: 100%;" required>
                     <option selected="selected">Selecione</option>
-                    <option>João Correia de Melo</option>
-                    <option>Cordeiro Filho</option>
-                    <option>Antonio Monteiro de Melo</option>
+                    <?php
+                        while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
+                            $nomeescola = $row_esc["nomeescola"];
+                    ?>
+                        <option value="<?php echo $nomeescola; ?>"><?php echo $nomeescola; ?></option>
+                    <?php } ?>
                   </select>
               </div>
               <div class="form-group">
                 <label>* Turma</label>
-                  <select name="turma" class="form-control select2" style="width: 100%;" required>
-                    <option selected="selected">Selecione</option>
-                    <option>Pre I</option>
-                    <option>1º Ano</option>
-                    <option>2º Ano</option>
+                  <select id="turmas" style="display:none" name="turma" class="form-control select2" style="width: 100%;" required>
+                    
+                    
                   </select>
               </div>
               <div class="form-group">
@@ -271,5 +280,30 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
+<script>
+  $("#escolas").on("change",function(){
+   var idEscolas = $("#escolas").val();
+    $.ajax({
+      url:'comboturmas/pega_turmas.php',
+      type: 'POST',
+      data: {id:idEscolas},
+      beforeSend: function(){
+        $("#turmas").css ({'display':'block'});
+        $("#turmas").html("Carregando...");
+      },
+      success: function(data){
+        $("#turmas").css ({'display':'block'});
+        $("#turmas").html(data);
+      },
+      error: function(data){
+        $("#turmas").css ({'display':'block'});
+        $("#turmas").html("Houve um erro ao Carregar.");
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
+

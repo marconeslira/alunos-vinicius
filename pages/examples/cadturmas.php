@@ -1,6 +1,6 @@
 <?php
 require "back/conect.php";
-$result_esc = "SELECT * FROM escola";
+$result_esc = "SELECT * FROM escola order by nomeescola asc";
 $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 ?>
 
