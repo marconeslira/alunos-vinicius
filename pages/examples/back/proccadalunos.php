@@ -41,20 +41,27 @@ if($imc < 18.5){
 };
 // fim calculo Estado Nutricional
 
+$sql = mysqli_query($con, "SELECT * FROM aluno WHERE nomealuno =  '$nomealuno' AND dtnascimento = '$dtnascimento'");
 
+if (mysqli_num_rows($sql)>0) {
 
-$sql = "INSERT INTO aluno (escolaaluno, turmaaluno, nomealuno, dtnascimento, idade, sexo, peso, 
-altura, imc, percentil, estnutricional) 
-VALUES ('$escola','$turma','$nomealuno','$dtnascimento','$idadebd','$sexo','$peso','$altura',
-'$imc','$percentil','$estnutricional')";
+    echo "<script>alert('Este aluno já tem cadastro no sistema!');window.location.href = '../cadalunos.php';</script>";
 
-if (mysqli_query($con, $sql)) {
-    echo "<script>alert('Registro Salvo com Sucesso!');window.location.href = '../cadalunos.php';</script>";
 } else {
-      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+
+    $sql = "INSERT INTO aluno (escolaaluno, turmaaluno, nomealuno, dtnascimento, idade, sexo, peso, 
+    altura, imc, percentil, estnutricional) 
+    VALUES ('$escola','$turma','$nomealuno','$dtnascimento','$idadebd','$sexo','$peso','$altura',
+    '$imc','$percentil','$estnutricional')";
+    
+    if (mysqli_query($con, $sql)) {
+        echo "<script>alert('Registro Salvo com Sucesso!');window.location.href = '../cadalunos.php';</script>";
+    } else {
+          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
+    
+
 }
-
-
 
 
 ?>

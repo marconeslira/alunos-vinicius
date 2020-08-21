@@ -176,7 +176,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
                <i class="fas fa-minus"></i></button>
               </div> -->
             </div>
-            <form action="back/proccadalunos.php" method="POST">  <!--formulario inicio-->
+            <form action="back/proccadalunos.php" method="POST" name="formulario">  <!--formulario inicio-->
             <div class="card-body">
               <div class="form-group">
                 <label>* Escola</label>
@@ -199,15 +199,15 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
               </div>
               <div class="form-group">
                 <label for="inputName">* Nome do Aluno</label>
-                <input type="text" id="inputName" name="nomealuno" class="form-control" required>
+                <input type="text" id="aluno" name="nomealuno" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="inputName">* Data Nascimento</label>
-                <input type="date" id="inputName" name="dtnascimento" class="form-control" required>
+                <input type="date" id="dtnasc" name="dtnascimento" onblur="calcidade()" class="form-control" required>
               </div>
               <div class="form-group">
                 <label for="inputName">Idade</label>
-                <input disabled type="number" id="inputName"  class="form-control" >
+                <input type="text" id="compidade" name="idade" class="form-control" disabled >
               </div>
               <div class="form-group">
                 <label>Sexo</label>
@@ -219,23 +219,23 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
               </div>
               <div class="form-group">
                 <label for="inputName">Peso</label>
-                <input type="text" id="inputName" name="peso" class="form-control">
+                <input type="text" id="peso" name="peso" class="form-control" onkeyup="substituiVirgula(this)">
               </div>
               <div class="form-group">
                 <label for="inputName">Altura</label>
-                <input type="text" id="inputName" name="altura" class="form-control">
+                <input type="text" id="altura" name="altura" onblur="calcimc()" class="form-control" onkeyup="substituiVirgula(this)">
               </div>
               <div class="form-group">
                 <label for="inputName">IMC</label>
-                <input disabled type="text" id="inputName"  class="form-control">
+                <input disabled type="text" id="imc"  class="form-control" >
               </div>
               <div class="form-group">
                 <label for="inputName">Percentil</label>
-                <input type="text" id="inputName" name="percentil" class="form-control">
+                <input type="text" id="percentil" name="percentil" class="form-control" onblur="calestnutri()">
               </div>
               <div class="form-group">
                 <label for="inputName">Estado Nutricional</label>
-                <input disabled type="text" id="inputName"  class="form-control">
+                <input disabled type="text" id="estnutri"  class="form-control">
               </div>
 
               </div>
@@ -281,28 +281,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
-<script>
-  $("#escolas").on("change",function(){
-   var idEscolas = $("#escolas").val();
-    $.ajax({
-      url:'comboturmas/pega_turmas.php',
-      type: 'POST',
-      data: {id:idEscolas},
-      beforeSend: function(){
-        $("#turmas").css ({'display':'block'});
-        $("#turmas").html("Carregando...");
-      },
-      success: function(data){
-        $("#turmas").css ({'display':'block'});
-        $("#turmas").html(data);
-      },
-      error: function(data){
-        $("#turmas").css ({'display':'block'});
-        $("#turmas").html("Houve um erro ao Carregar.");
-      }
-    });
-  });
-</script>
+<script src="../../dist/js/funcoes.js"></script>
 
 </body>
 </html>
