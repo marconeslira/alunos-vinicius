@@ -140,9 +140,15 @@ $resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
                   <p>Por Turma</p>
                 </a>
               </li>
+              
             </ul>
           </li>
-
+          <li class="nav-item">
+                <a href="../../index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sair</p>
+                </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -138,7 +138,12 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
               </li>
             </ul>
           </li>
-
+          <li class="nav-item">
+                <a href="../../index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sair</p>
+                </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
