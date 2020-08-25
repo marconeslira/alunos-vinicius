@@ -189,13 +189,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pages/examples/cadescolas.html" class="nav-link active">
+                <a href="./pages/examples/cadescolas.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/examples/cadturmas.html" class="nav-link">
+                <a href="./pages/examples/cadturmas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>

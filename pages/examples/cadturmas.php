@@ -2,6 +2,10 @@
 require "back/conect.php";
 $result_esc = "SELECT * FROM escola order by nomeescola asc";
 $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+
+//select for class
+$result_tur = "SELECT * FROM turma order by nomeescola asc";
+$resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
 ?>
 
 
@@ -22,6 +26,10 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!--Import dataTables.css-->
+ <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -42,7 +50,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-secundary elevation-4">
     <!-- Brand Logo -->
     <a href="../../dash.php" class="brand-link">
       <img src="../../dist/img/vllogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -85,19 +93,19 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./cadescolas.html" class="nav-link">
+                <a href="./cadescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./cadturmas.html" class="nav-link active">
+                <a href="./cadturmas.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./cadalunos.html" class="nav-link">
+                <a href="./cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -153,7 +161,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../../index.html">Início</a></li>
+              <li class="breadcrumb-item"><a href="../../dash.php">Início</a></li>
               <li class="breadcrumb-item active">Cadastro de Turmas</li>
             </ol>
           </div>
@@ -165,7 +173,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
     <section class="content">
       
       <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-11">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title"></h3>
@@ -199,10 +207,6 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
               </div>
             </div>
 
-                
-                
-                
-
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -212,7 +216,41 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
             </div>
           </div>
         </div>
-      </div>
+      </div><br>
+      <div class="col-md-11">
+        <div class="card card-primary">
+        <div class="card-header">
+          <h3 class="card-title">Turmas Cadastradas</h3>
+        </div> 
+        <div class="card-body">
+          <table class="table table-striped" id="minhaTabela">
+              <thead class="bg-info">
+                <tr>
+                  <th scope="col">Escola</th>
+                  <th scope="col">Turma</th>
+                  <th>Ano Letivo</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php
+                    while ($row_tur = mysqli_fetch_assoc($resultado_tur)) {
+                        
+                ?>
+                  <tr>
+                    <td><?php echo $row_tur["nomeescola"];?></td>
+                    <td><?php echo $row_tur["nometurma"];?></td>
+                    <td><?php echo $row_tur["anoletivo"];?></td>
+                    <td>
+                    <a href="#" class="btn-sm btn-outline-info">Alterar</a>
+                    <!--<a href="#" class="btn-sm btn-outline-danger">Excluir</a>-->
+                    </td>
+                  </tr>
+                    <?php } ?>
+              </tbody>
+            </table>
+          </div>
+        </div>   <!-- fim da tabela cadastrados -->
     </form>  <!--formulario fim-->
     </section>
   
@@ -234,9 +272,12 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="../../dist/js/funcoes.js"></script>
+<!-- jQuery 
+<script src="../../plugins/jquery/jquery.min.js"></script>-->
 
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
