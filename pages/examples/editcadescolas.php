@@ -1,17 +1,23 @@
 <?php
 require "back/conect.php";
-//select for scholl
-$result_esc = "SELECT * FROM escola ORDER BY nomeescola ASC";
-$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
-?>
 
+$idescola = $_GET['id'];
+
+//select for scholl
+$result_esc = "SELECT * FROM escola WHERE idescola = '$idescola'";
+$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
+  $nomeescola = $row_esc['nomeescola'];
+
+}
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CadEscolas</title>
+  <title>AltEscolas</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -158,12 +164,12 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cadastro de Escolas</h1>
+            <h1>Alterar Dados de Escola</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../../dash.php">Início</a></li>
-              <li class="breadcrumb-item active">Cadastro de Escolas</li>
+              <li class="breadcrumb-item active">Alterar Dados de Escola</li>
             </ol>
           </div>
         </div>
@@ -184,11 +190,14 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
                <i class="fas fa-minus"></i></button>
               </div> -->
             </div>
-            <form action="./back/proccadescolas.php" method="POST">  <!--formulario inicio-->
+            <form action="./back/proceditcadescolas.php" method="POST">  <!--formulario inicio-->
             <div class="card-body">
+            
+                <input type="hidden" id="inputName"  name="idescola" class="form-control" required value="<?php echo $idescola?>">
+              
               <div class="form-group">
                 <label for="inputName">* Nome da Escola</label>
-                <input type="text" id="inputName" name="nomeescola" class="form-control" required>
+                <input type="text" id="inputName" name="nomeescola" class="form-control" required value="<?php echo $nomeescola ?>">
               </div>
               </div>
             
@@ -197,43 +206,11 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
           <!-- /.card -->
           <div class="row">
             <div class="col-md-12">
-              <input type="submit" value="salvar" class="btn btn-outline-primary float-right">
+              <input type="submit" value="Salvar Alterações" class="btn btn-outline-primary float-right">
             </div>
           </div>
         </div>
       </div><br>
-      <div class="col-md-11">
-        <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Escolas Cadastradas</h3>
-        </div> 
-        <div class="card-body">
-          <table class="table table-striped" id="minhaTabela">
-              <thead class="bg-info">
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Escola</th>
-                  <th>Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-                    while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
-                        
-                ?>
-                  <tr>
-                    <td><?php echo $row_esc["idescola"];?></td>
-                    <td><?php echo $row_esc["nomeescola"];?></td>
-                    <td>
-                    <a href="editcadescolas.php?id=<?php echo $row_esc["idescola"];?>" class="btn-sm btn-outline-info">Alterar</a>
-                    <!--<a href="#" class="btn-sm btn-outline-danger">Excluir</a>-->
-                    </td>
-                  </tr>
-                    <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>   <!-- fim da tabela cadastrados -->
     </form>  <!--formulario fim-->
     </section>
   

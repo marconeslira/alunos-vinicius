@@ -2,7 +2,7 @@
 <?php
 
 require "conect.php";
-
+$idaluno = $_POST['idaluno'];
 $escola = $_POST['escola'];
 $turma = $_POST['turma'];
 $nomealuno = $_POST['nomealuno'];
@@ -23,7 +23,7 @@ $altura = str_replace(',', '.', $_POST['altura']);
 $imc = (int)($peso / ($altura * $altura));
 //fim calculo imc
 
-$percentil = $_POST['percentil'];
+$percentil = $_POST["percentil"];
 
 //calculo Estado Nutricional
 if($percentil == "-p3"){
@@ -39,27 +39,13 @@ if($percentil == "-p3"){
 };
 // fim calculo Estado Nutricional
 
-$sql = mysqli_query($con, "SELECT * FROM aluno WHERE nomealuno =  '$nomealuno' AND dtnascimento = '$dtnascimento'");
-
-if (mysqli_num_rows($sql)>0) {
-
-    echo "<script>alert('Este aluno já tem cadastro no sistema!');window.location.href = '../cadalunos.php';</script>";
-
-} else {
-
-    $sql = "INSERT INTO aluno (escolaaluno, turmaaluno, nomealuno, dtnascimento, idade, sexo, peso, 
-    altura, imc, percentil, estnutricional) 
-    VALUES ('$escola','$turma','$nomealuno','$dtnascimento','$idadebd','$sexo','$peso','$altura',
-    '$imc','$percentil','$estnutricional')";
+    $up = ("UPDATE aluno SET escolaaluno='$escola', turmaaluno='$turma', nomealuno='$nomealuno', dtnascimento='$dtnascimento', idade='$idadebd', sexo='$sexo', peso='$peso', 
+    altura='$altura', imc='$imc', percentil='$percentil', estnutricional='$estnutricional' WHERE idaluno = '$idaluno'");
     
-    if (mysqli_query($con, $sql)) {
-        echo "<script>alert('Registro Salvo com Sucesso!');window.location.href = '../cadalunos.php';</script>";
+    if (mysqli_query($con, $up)) {
+        echo "<script>alert('Dados Atualizados com Sucesso!');window.location.href = '../cadalunos.php';</script>";
     } else {
-          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+          echo "Error: " . $up . "<br>" . mysqli_error($con);
     }
     
-
-}
-
-
 ?>

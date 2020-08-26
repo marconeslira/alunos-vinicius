@@ -64,20 +64,18 @@ document.getElementById('imc').setAttribute("value", imc);
 
  //mostra resultado estado nutricional
 function calestnutri(){
-var imc = document.getElementById('imc').value;
+var percentil = document.getElementById('percentil').value;
 var estnutricional;
-  if(imc < 18.5){
-    estnutricional = "Baixo Peso";
-}else if((imc >=18.5) && (imc< 24.9)){
-    estnutricional = "Peso Normal";
-}else if((imc >=25) && (imc <=29.9)){
-    estnutricional = "Sobrepeso";
-}else if((imc >=30) && (imc <=34.9)){
-    estnutricional = "Obesidade Grau 1";
-}else if((imc >=35) && (imc <=39.9)){
-    estnutricional = "Obesidade Grau 2";
-}else if(imc >=40){
-    estnutricional = "Obesidade Grau 3";
+if(percentil == "-p3"){
+  estnutricional = "Baixo Peso";
+}else if(percentil == "p3-p5"){
+  estnutricional = "Eutrófico/Risco Baixo Peso";
+}else if((percentil == "p15-p50") || ( percentil == "p50-p85")){
+  estnutricional = "Eutrófico";
+}else if(percentil == "p85-p97"){
+  estnutricional = "Eutrófico/Risco de Obesidade";
+}else if(percentil == "+p97"){
+  estnutricional = "Obesidade";
 };
 document.getElementById('estnutri').setAttribute("value", estnutricional);
 }

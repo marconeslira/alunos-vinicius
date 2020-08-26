@@ -248,8 +248,8 @@ $resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
                     <td><?php echo $row_tur["nometurma"];?></td>
                     <td><?php echo $row_tur["anoletivo"];?></td>
                     <td>
-                    <a href="#" class="btn-sm btn-outline-info">Alterar</a>
-                    <!--<a href="#" class="btn-sm btn-outline-danger">Excluir</a>-->
+                    <a href="editcadturmas.php?id=<?php echo $row_tur['idturma']?>" class="btn-sm btn-outline-info ">Alterar</a>
+                    <!--<a href="excluiturmas.php?id=<?php //echo $row_tur['idturma']?>" class="btn-sm btn-outline-danger " onclick="return false;">Excluir</a>-->
                     </td>
                   </tr>
                     <?php } ?>
