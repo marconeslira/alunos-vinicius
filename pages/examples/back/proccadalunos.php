@@ -26,11 +26,11 @@ $imc = (int)($peso / ($altura * $altura));
 $percentil = $_POST['percentil'];
 
 //calculo Estado Nutricional
-if($percentil == "-p3"){
+if(($percentil == "-p3") || ($percentil == "p3")){
     $estnutricional = "Baixo Peso";
 }else if($percentil == "p3-p5"){
     $estnutricional = "Eutrófico/Risco Baixo Peso";
-}else if(($percentil == "p15-p50") || ($percentil == "p50-p85")){
+}else if(($percentil == "p3-p15") || ($percentil == "p15") || ($percentil == "p50-p85") || ($percentil == "p15-p50")){
     $estnutricional = "Eutrófico";
 }else if($percentil == "p85-p97"){
     $estnutricional = "Eutrófico/Risco de Obesidade";

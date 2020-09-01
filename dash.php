@@ -189,19 +189,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./pages/examples/cadescolas.php" class="nav-link active">
+                <a href="pages/examples/cadescolas.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/examples/cadturmas.php" class="nav-link">
+                <a href="pages/examples/cadturmas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./pages/examples/cadalunos.php" class="nav-link">
+                <a href="pages/examples/cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -219,19 +219,19 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
@@ -240,7 +240,7 @@
             
           </li>
           <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sair</p>
                 </a>

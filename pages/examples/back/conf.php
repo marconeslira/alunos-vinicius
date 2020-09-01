@@ -11,9 +11,9 @@ $pass="46132680";
 
 /* para usar no servidor web
 $host="localhost";
-$bd="u973310926_casadospobres";
-$user="u973310926_casadospobres";
-$pass=" wAvcMEP+";
+$bd="u389923015_vlnutribd";
+$user="u389923015_vlnutriuser";
+$pass="Marcones#12";
 */
 
 

@@ -232,11 +232,11 @@ $resultado_cad = mysqli_query($con, $result_cad) or die(mysqli_error($con));
             </div> 
              <div class="card-body">
              <div class="form-group">
-                <label for="inputName">Peso</label>
+                <label for="inputName">Peso (kg)</label>
                 <input type="text" id="peso" name="peso" class="form-control" onkeyup="substituiVirgula(this)">
               </div>
               <div class="form-group">
-                <label for="inputName">Altura</label>
+                <label for="inputName">Altura (m)</label>
                 <input type="text" id="altura" name="altura" onblur="calcimc()" class="form-control" onkeyup="substituiVirgula(this)">
               </div>
               <div class="form-group">
