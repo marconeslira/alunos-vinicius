@@ -20,7 +20,8 @@ $peso = str_replace(',', '.', $_POST['peso']); //trocar ponto por virgula
 $altura = str_replace(',', '.', $_POST['altura']);
 
 //calculo do IMC
-$imc = (int)($peso / ($altura * $altura));
+$imc1 = ($peso / ($altura * $altura));
+$imc = number_format($imc1, 2, '.', ',');
 //fim calculo imc
 
 $percentil = $_POST['percentil'];

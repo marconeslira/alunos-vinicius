@@ -219,13 +219,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link active">
+                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Consolidado</p>
+                  <p>Geral Alunos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="pages/examples/buscaporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escolas</p>
                 </a>
@@ -431,5 +431,7 @@
 <script src="dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+
+
 </body>
 </html>
