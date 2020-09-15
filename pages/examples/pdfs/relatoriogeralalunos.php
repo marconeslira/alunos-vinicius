@@ -60,34 +60,36 @@ $pdf->Cell(20,8,'TOTAIS:',0,1);
 //quantidade de Baixo Peso
 $contando = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso'";
 $rest = mysqli_query($con, $contando);
-$cont = mysqli_num_rows($rest);
-$pdf->Cell(40,10,'Baixo Peso: '.$cont,0,0);
+$cont1 = mysqli_num_rows($rest);
+$pdf->Cell(40,10,'Baixo Peso: '.$cont1,0,0);
 
 //quantidade Eutrófico/Risco de Baixo Peso
 $contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso'";
 $rest = mysqli_query($con, $contando);
-$cont = mysqli_num_rows($rest);
-$pdf->Cell(45,10,'Risc. Baixo Peso: '.$cont,0,0);
+$cont2 = mysqli_num_rows($rest);
+$pdf->Cell(45,10,'Risc. Baixo Peso: '.$cont2,0,0);
 
 //quantidade Eutrófico
 $contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico'";
 $rest = mysqli_query($con, $contando);
-$cont = mysqli_num_rows($rest);
-$pdf->Cell(35,10,utf8_decode('Eutrófico: '.$cont),0,0);
+$cont3 = mysqli_num_rows($rest);
+$pdf->Cell(35,10,utf8_decode('Eutrófico: '.$cont3),0,0);
 
 //quantidade obesidade
 $contando = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade'";
 $rest = mysqli_query($con, $contando);
-$cont = mysqli_num_rows($rest);
-$pdf->Cell(35,10,'Obesidade: '.$cont,0,0);
+$cont4 = mysqli_num_rows($rest);
+$pdf->Cell(35,10,'Obesidade: '.$cont4,0,0);
 
 //quantidade Eutrófico/Risco de Obesidade
 $contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade'";
 $rest = mysqli_query($con, $contando);
-$cont = mysqli_num_rows($rest);
-$pdf->Cell(30,10,'Risc. Obesidade: '.$cont,0,0);
+$cont5 = mysqli_num_rows($rest);
+$pdf->Cell(45,10,'Risc. Obesidade: '.$cont5,0,0);
 
+$totalunos = ($cont1 + $cont2 + $cont3 + $cont4 + $cont5);
 
+$pdf->Cell(30,10,'TOTAL DE ALUNOS: '.$totalunos,0,0);
 
 $pdf->Output();
 ?>

@@ -88,19 +88,15 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
-               <li class="nav-item">
+        <li class="nav-item">
                 <a href="../../dash.php" class="nav-link">
                   <i class="fas fa-home nav-icon"></i>
-                  <p>Início</p>
+                  <p>Dashboard</p>
                 </a>
               </li>
-
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon far fa-edit"></i>
               <p>
                 Cadastrar
                 <i class="right fas fa-angle-left"></i>
@@ -108,19 +104,19 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./cadescolas.php" class="nav-link ">
+                <a href="pages/examples/cadescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./cadturmas.php" class="nav-link">
+                <a href="pages/examples/cadturmas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./cadalunos.php" class="nav-link active">
+                <a href="pages/examples/cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -138,28 +134,64 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link">
+                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Consolidado</p>
+                  <p>Geral Alunos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link">
+                <a href="pages/examples/buscaporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Por Escolas</p>
+                  <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+                <a href="pages/examples/buscaporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+                Gráficos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartconsolidadoview.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
+                  <p>Consolidado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/chartporescola.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Por Escola</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/chartporescolaeturma.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Por Turma</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/chartcompescolas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comparativo por Escola</p>
+                </a>
+              </li>
+            </ul>
+            
+          </li>
+          <li class="nav-item">
+                <a href="index.html" class="nav-link">
+                  <i class="far fas fa-power-off"></i>
                   <p>Sair</p>
                 </a>
               </li>

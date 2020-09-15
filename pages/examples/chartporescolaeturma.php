@@ -1,17 +1,19 @@
 <?php
-require "../examples/back/conect.php";
-$result_esc = "SELECT * FROM aluno";
-$res = mysqli_query($con, $result_esc) or die(mysqli_error($con));
-$qtd = mysqli_num_rows($res);
+require "back/conect.php";
+//select for scholl
+$result_esc = "SELECT * FROM escola order by nomeescola asc";
+$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+//select table registered
+$result_cad = "SELECT * FROM aluno order by nomealuno asc";
+$resultado_cad = mysqli_query($con, $result_cad) or die(mysqli_error($con));
 ?>
-
 
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Busca Por Escola</title>
+  <title>Gráfico por Escola e Turma</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,65 +26,7 @@ $qtd = mysqli_num_rows($res);
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!--Import dataTables.css-->
- <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-
- <!--CHART COD-->
- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-                 
-          <?php
-          require '../examples/back/conect.php';
-          
-          //buscando quantidade de baixo peso
-          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso'";
-          $consulta = mysqli_query($con, $sql);
-          $res = mysqli_num_rows($consulta);     
-          
-          //buscando quantidade de risco baixo peso
-          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso'";
-          $consulta1 = mysqli_query($con, $sql1);
-          $res1 = mysqli_num_rows($consulta1);  
-
-          
-          //buscando quantidade de Eutrófico
-          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico'";
-          $consulta2 = mysqli_query($con, $sql2);
-          $res2 = mysqli_num_rows($consulta2); 
-
-          //buscando quantidade de Obesidade
-          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade'";
-          $consulta3 = mysqli_query($con, $sql3);
-          $res3 = mysqli_num_rows($consulta3); 
-
-          //buscando quantidade de risco baixo peso
-          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade'";
-          $consulta4 = mysqli_query($con, $sql4);
-          $res4 = mysqli_num_rows($consulta4);  
-          ?>
-
-           //EXIBINDO DADOS
-           ['ano','2020'],
-           ['Baixo Peso', <?php echo $res;?>],
-           ['Risc. Baixo Peso', <?php echo $res1;?>],
-           ['Eutrófico', <?php echo $res2;?>],
-           ['Obesidade', <?php echo $res3;?>],
-           ['Risc. Obesidade', <?php echo $res4;?>]
-        ]);
-        
-        var options = {
-          title: 'Gráfico de Recortes sobre o Total de Alunos Cadastrados no Sistema',
-          pieHole: 0.4,
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
-    </script>
- <!--END CHART COD-->
+  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -94,7 +38,6 @@ $qtd = mysqli_num_rows($res);
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-     
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -103,9 +46,9 @@ $qtd = mysqli_num_rows($res);
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-secundary elevation-4">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../dash.php" class="brand-link">
+    <a href="dash.php" class="brand-link">
       <img src="../../dist/img/vllogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: 1">
       <span class="brand-text font-weight-light">VL-Nutri</span>
@@ -123,8 +66,8 @@ $qtd = mysqli_num_rows($res);
         </div>
       </div>
 
-       Sidebar Menu -->
-       <nav class="mt-2">
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
                 <a href="../../dash.php" class="nav-link">
@@ -247,13 +190,12 @@ $qtd = mysqli_num_rows($res);
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><strong>Gráfico Consolidado de Informações</strong></h1><br>
-            <h4>Total de Alunos: <?echo $qtd?> </h4>
+            <h1>Gráfico por Escola e Turma</h1>
           </div>
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Gráfico Consolidado</li>
+              <li class="breadcrumb-item active">Gráfico por Escola e Turma</li>
             </ol>
           </div>
         </div>
@@ -263,9 +205,48 @@ $qtd = mysqli_num_rows($res);
     <!-- conteúdo -->
     <section class="content">
       
-       <!-- CHAMADA CHART -->
-       <div id="donutchart" style="width: 100%; height: 500px;"></div>
+      <div class="row"> <!-- inicio da linha 1 -->
+        <div class="col-md-12"> <!--inicio da coluna 1 -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title"></h3>
+            
+            </div>
+            <form action="../charts/chartporescolaeturmaview.php" method="POST" name="formulario">  <!--formulario inicio-->
+            <div class="card-body">
+              <div class="form-group">
+                <label>* Escola</label>
+                  <select name="escola" id="escolas" class="form-control select2" style="width: 100%;" required>
+                    <option selected="selected">Selecione</option>
+                    <?php
+                        while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
+                            $nomeescola = $row_esc["nomeescola"];
+                    ?>
+                        <option value="<?php echo $nomeescola; ?>"><?php echo $nomeescola; ?></option>
+                    <?php } ?>
+                  </select>
+              </div>
+              <div class="form-group">
+                <label>* Turma</label>
+                  <select id="turmas" style="display:none" name="turma" class="form-control select2" style="width: 100%;" required>         
+                  </select>
+              </div>
+              
+          <div class="row"> <!-- botao salvar-->
+              <div class="col-md-12">
+                <input type="submit" value="Enviar" class="btn btn-outline-primary float-right">
+              </div>
+           </div>
+              </div>
+            </div>   <!-- fim da tabela cadastrados -->
+          </div>  
+              </div>
+          </div>
+        </div>
 
+      </div> <!--fim linha 1--> 
+
+    </form>  <!--formulario fim-->
     </section>
   
     <!-- /.content -->
@@ -276,7 +257,7 @@ $qtd = mysqli_num_rows($res);
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br" target="blank"> By: dlirati.com.br</a> - </strong> Direitos Reservados.
+    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br"> By: dlirati.com.br</a> - </strong> Direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->
@@ -286,11 +267,10 @@ $qtd = mysqli_num_rows($res);
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 <script src="../../dist/js/funcoes.js"></script>
-<!-- jQuery 
-<script src="../../plugins/jquery/jquery.min.js"></script>-->
 
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -298,5 +278,6 @@ $qtd = mysqli_num_rows($res);
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+
 </body>
 </html>

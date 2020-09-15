@@ -213,7 +213,7 @@ $qtdalunos = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/cadescolas.php" class="nav-link active">
+                <a href="pages/examples/cadescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
@@ -243,7 +243,7 @@ $qtdalunos = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link active">
+                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -272,7 +272,7 @@ $qtdalunos = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartconsolidadoview.php" class="nav-link active">
+                <a href="pages/charts/chartconsolidadoview.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
@@ -284,9 +284,15 @@ $qtdalunos = mysqli_num_rows($res);
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/chartporescolaeturma.php" class="nav-link">
+                <a href="pages/examples/chartporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/chartcompescolas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Comparativo por Escola</p>
                 </a>
               </li>
             </ul>
@@ -330,7 +336,7 @@ $qtdalunos = mysqli_num_rows($res);
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
+            <div class="small-box bg-primary">
               <div class="inner">
                 <h3><?php echo $qtdescolas; ?></h3>
 
@@ -345,7 +351,7 @@ $qtdalunos = mysqli_num_rows($res);
           <!-- ./col -->
           <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-success">
+            <div class="small-box bg-danger">
               <div class="inner">
                 <h3><?php echo $qtdturmas; ?><sup style="font-size: 20px"></sup></h3>
 
@@ -373,20 +379,20 @@ $qtdalunos = mysqli_num_rows($res);
             </div>
           </div>
           <!-- ./col -->
-         <!-- <div class="col-lg-3 col-6">
-            <!-- small box 
-            <div class="small-box bg-danger">
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
               <div class="inner">
-                <h3>65</h3>
+                <h3>3</h3>
 
-                <p>Unique Visitors</p>
+                <p>Gráficos</p>
               </div> 
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>
               </div>
-              <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              
             </div>
-          </div> -->
+          </div> 
           <!-- ./col -->
         </div>
         <!-- /.row -->
