@@ -158,11 +158,11 @@ $resultado_cad = mysqli_query($con, $result_cad) or die(mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cadastro de Alunos</h1>
+            <h1>Busca de Alunos por Escola e Turma</h1>
           </div>
           <div class="col-sm-12">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../../dash.php">Início</a></li>
+              <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
               <li class="breadcrumb-item active">Busca de Alunos por Escola e Turma</li>
             </ol>
           </div>
@@ -225,7 +225,7 @@ $resultado_cad = mysqli_query($con, $result_cad) or die(mysqli_error($con));
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a href="#"> By: SoftEncode.com</a> - </strong> Direitos Reservados.
+    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br"> By: dlirati.com.br</a> - </strong> Direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->

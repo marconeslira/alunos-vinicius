@@ -168,7 +168,7 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../../dash.php">Início</a></li>
+              <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
               <li class="breadcrumb-item active">Alterar Dados de Escola</li>
             </ol>
           </div>
@@ -222,7 +222,7 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a href="#"> By: SoftEncode.com</a> - </strong> Direitos Reservados.
+    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br" target="blank"> By: dlirati.com.br</a> - </strong> Direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->

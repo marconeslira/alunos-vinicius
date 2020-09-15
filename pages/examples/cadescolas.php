@@ -48,7 +48,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dash.php" class="brand-link">
+    <a href="../../dash.php" class="brand-link">
       <img src="../../dist/img/vllogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: 1">
       <span class="brand-text font-weight-light">VL-Nutri</span>
@@ -162,7 +162,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="../../dash.php">Início</a></li>
+              <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
               <li class="breadcrumb-item active">Cadastro de Escolas</li>
             </ol>
           </div>
@@ -245,7 +245,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a href="#"> By: SoftEncode.com</a> - </strong> Direitos Reservados.
+    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br" target="blank"> By: dlirati.com.br</a> - </strong> Direitos Reservados.
   </footer>
 
   <!-- Control Sidebar -->

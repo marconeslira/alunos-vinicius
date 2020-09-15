@@ -1,7 +1,8 @@
 <?php
-require "back/conect.php";
-$result_esc = "SELECT * FROM escola order by nomeescola asc";
-$resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+require "../examples/back/conect.php";
+$result_esc = "SELECT * FROM aluno";
+$res = mysqli_query($con, $result_esc) or die(mysqli_error($con));
+$qtd = mysqli_num_rows($res);
 ?>
 
 
@@ -25,7 +26,63 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <!--Import dataTables.css-->
  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+ <!--CHART COD-->
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+                 
+          <?php
+          require '../examples/back/conect.php';
+          
+          //buscando quantidade de baixo peso
+          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso'";
+          $consulta = mysqli_query($con, $sql);
+          $res = mysqli_num_rows($consulta);     
+          
+          //buscando quantidade de risco baixo peso
+          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso'";
+          $consulta1 = mysqli_query($con, $sql1);
+          $res1 = mysqli_num_rows($consulta1);  
 
+          
+          //buscando quantidade de Eutrófico
+          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico'";
+          $consulta2 = mysqli_query($con, $sql2);
+          $res2 = mysqli_num_rows($consulta2); 
+
+          //buscando quantidade de Obesidade
+          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade'";
+          $consulta3 = mysqli_query($con, $sql3);
+          $res3 = mysqli_num_rows($consulta3); 
+
+          //buscando quantidade de risco baixo peso
+          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade'";
+          $consulta4 = mysqli_query($con, $sql4);
+          $res4 = mysqli_num_rows($consulta4);  
+          ?>
+
+           //EXIBINDO DADOS
+           ['ano','2020'],
+           ['Baixo Peso', <?php echo $res;?>],
+           ['Risc. Baixo Peso', <?php echo $res1;?>],
+           ['Eutrófico', <?php echo $res2;?>],
+           ['Obesidade', <?php echo $res3;?>],
+           ['Risc. Obesidade', <?php echo $res4;?>]
+        ]);
+        
+        var options = {
+          title: 'Gráfico de Recortes sobre o Total de Alunos Cadastrados no Sistema',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+ <!--END CHART COD-->
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -159,12 +216,13 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Busca de Alunos por Escola</h1>
+            <h1><strong>Gráfico Consolidado de Informações</strong></h1><br>
+            <h4>Total de Alunos: <?echo $qtd?> </h4>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Busca de Alunos por Escola</li>
+              <li class="breadcrumb-item active">Gráfico Consolidado</li>
             </ol>
           </div>
         </div>
@@ -174,42 +232,9 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
     <!-- conteúdo -->
     <section class="content">
       
-      <div class="row">
-        <div class="col-md-11">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title"></h3>
+       <!-- CHAMADA CHART -->
+       <div id="donutchart" style="width: 100%; height: 500px;"></div>
 
-               <!--  <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-               <i class="fas fa-minus"></i></button>
-              </div> -->
-            </div>
-            <form action="pdfs/relatorioporescola.php" method="POST">  <!--formulario inicio-->
-            <div class="card-body">
-              <div class="form-group">
-                <label>*Selecione a Escola</label>
-                  <select class="form-control select2" style="width: 100%;" name="nomeescola" require>
-                    <option selected="selected">Selecione</option>
-                    <?php
-                        while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
-                            $nomeescola = $row_esc["nomeescola"];
-                    ?>
-                        <option value="<?php echo $nomeescola; ?>"><?php echo $nomeescola; ?></option>
-                    <?php } ?>
-                  </select>
-              </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-          <div class="row">
-            <div class="col-md-12">
-              <input type="submit" value="Enviar" class="btn btn-outline-primary float-right">
-            </div>
-          </div>
-        </div>
-      </div><br>
-          </form>  <!--formulario fim-->
     </section>
   
     <!-- /.content -->

@@ -1,9 +1,29 @@
+<?php
+require 'pages/examples/back/conect.php';
+
+//busca qtd escolas cadastradas
+$sql = "SELECT * FROM escola";
+$res = mysqli_query($con, $sql);
+$qtdescolas = mysqli_num_rows($res);
+
+//busca qtd turmas cadastradas
+$sql = "SELECT * FROM turma";
+$res = mysqli_query($con, $sql);
+$qtdturmas = mysqli_num_rows($res);
+
+//busca qtd alunos cadastrados
+$sql = "SELECT * FROM aluno";
+$res = mysqli_query($con, $sql);
+$qtdalunos = mysqli_num_rows($res);
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>VL-Nutri</title>
+  <title>Dashboard | VL-Nutri</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -18,6 +38,7 @@
   <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/principal.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -32,11 +53,13 @@
 
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
+      
      <!-- <li class="nav-item d-none d-sm-inline-block">
         <a href="index3.html" class="nav-link">Home</a>
       </li>
@@ -59,6 +82,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+      
       <!-- Messages Dropdown Menu 
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
@@ -156,7 +180,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="dash.php" class="brand-link">
+    <a href="#" class="brand-link">
       <img src="dist/img/vllogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: 1">
       <span class="brand-text font-weight-light">VL-Nutri</span>
@@ -181,7 +205,7 @@
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview ">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
+              <i class="nav-icon far fa-edit"></i>
               <p>
                 Cadastrar
                 <i class="right fas fa-angle-left"></i>
@@ -227,11 +251,40 @@
               <li class="nav-item">
                 <a href="pages/examples/buscaporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Por Escolas</p>
+                  <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="pages/examples/buscaporescolaeturma.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Por Turma</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview ">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-line"></i>
+              <p>
+                Gráficos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/charts/chartconsolidadoview.php" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Consolidado</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/examples/chartporescola.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Por Escola</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="pages/charts/chartporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
@@ -241,7 +294,7 @@
           </li>
           <li class="nav-item">
                 <a href="index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fas fa-power-off"></i>
                   <p>Sair</p>
                 </a>
               </li>
@@ -259,12 +312,10 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Início</h1>
+            <h1 class="m-0 text-dark">Dashboard</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Início</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -281,7 +332,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>24</h3>
+                <h3><?php echo $qtdescolas; ?></h3>
 
                 <p>Escolas</p>
               </div>
@@ -296,7 +347,7 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>20<sup style="font-size: 20px"></sup></h3>
+                <h3><?php echo $qtdturmas; ?><sup style="font-size: 20px"></sup></h3>
 
                 <p>Turmas</p>
               </div>
@@ -311,7 +362,7 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>125</h3>
+                <h3><?php echo $qtdalunos; ?></h3>
 
                 <p>Alunos</p>
               </div>
@@ -342,36 +393,28 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <section class="col-lg-7 connectedSortable">
+          <section class="col-lg-12 connectedSortable">
           
             <!-- BAR CHART -->
           <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title">Consolidado</h3>
+              <h3 class="card-title">Consolidado de Informações - Gráfico referente ao Total Geral de Alunos</h3>            
+            </div><br>
+            <iframe src="pages/charts/chartdash1.php" width="900" height="400" frameborder="none" overflow="auto">
+            </iframe>
+            </div>
+            
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="chart">
-                <canvas id="barChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
-              </div>
-            </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-
+          
           </section>
           <!-- /.fim coluna esquerda -->
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
-           
-
-            
+          
           </section>
           <!-- right col -->
         </div>
@@ -382,7 +425,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2020 <a href="#"> By: SoftEncode.com</a>.</strong> - 
+    <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br" target="blank"> By: dlirati.com.br</a>.</strong> - 
     Direitos Reservados.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0
