@@ -388,7 +388,7 @@ $qtdalunos = mysqli_num_rows($res);
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>3</h3>
+                <h3>4</h3>
 
                 <p>Gráficos</p>
               </div> 

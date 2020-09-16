@@ -4,8 +4,8 @@
 
 session_start();
 
-if(!isset($_SESSION['cpf'])){
-    echo"<script>alert('Necessário Fazer Login!');window.location.href='../../index.html';</script>";
+if(!isset($_SESSION['nomeUser'])){
+    echo"<script>alert('Necessário Fazer Login!');window.location.href='index.html';</script>";
     die();
 } else {
 

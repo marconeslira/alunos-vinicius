@@ -18,7 +18,7 @@ while($dado = $res->fetch_array()){
   $nomeUser = $dado['nome_usuario'];
   };
          session_start();
-         $_SESSION['cpf'] = $cpf;
+         //$_SESSION['cpf'] = $cpf;
          $_SESSION['nomeUser'] = $nomeUser;
          echo"<script>alert('Login Realizado com Sucesso!');window.location.href='../../../dash.php';</script>";
         }
