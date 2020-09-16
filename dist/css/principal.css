@@ -1,1 +1,6 @@
-.soft {width: 142px; height: 47px;}
+.soft {width: 200px; height: 60px; border-radius: 5px; margin-bottom: 10px; margin-top: -20%;}
+#btn{width: 356px; border-radius: 0px; margin-left: 3px;}
+.rodapeindex{margin-top: 100px;}
+#bakbody{background-color: #F4F3EF;}
+.userlogado{float: right; font-size: 20px;}
+#useri{margin-right: 10px;}

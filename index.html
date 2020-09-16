@@ -19,23 +19,21 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" id="bakbody">
 <div class="login-box">
   <div class="login-logo">
     <img class="soft" src="dist/img/vllogomenu.png" alt="">
-    <img class="soft" src="dist/img/SElogo.png" alt="">
+   
   </div>
   <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-      <p class="login-box-msg">Faça Login com seu CPF e Senha</p>
-
+  <div >
+    <div>
       <form action="pages/examples/back/proclogin.php" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="CPF" name="cpf">
+          <input type="text" class="form-control" placeholder="CPF" name="cpf" autofocus>
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-file"></span>
+              <span class="	far fa-address-card"></span>
             </div>
           </div>
         </div>
@@ -43,22 +41,15 @@
           <input type="password" class="form-control" placeholder="Senha" name="senha">
           <div class="input-group-append">
             <div class="input-group-text">
-              <span class="fas fa-lock"></span>
+              <span class="fas fa-key"></span>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <!--<div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>-->
-          </div>
+          
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-outline-primary">Entrar</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-outline-info" id="btn">Entrar</button>
           </div>
           <!-- /.col -->
         </div>
@@ -95,5 +86,11 @@
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 
+<footer class="rodapeindex">
+  <strong>Copyright &copy; 2020 <a href="http://dlirati.com.br" target="blank"> By: dlirati.com.br</a></strong> 
+  <div class="float-right d-none d-sm-inline-block">
+  <b>Version</b> 1.0
+  </div>
+</footer>
 </body>
 </html>

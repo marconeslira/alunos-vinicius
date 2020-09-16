@@ -1,4 +1,5 @@
 <?php
+require "back/fontkey.php";
 require "back/conect.php";
 
 $idescola = $_GET['id'];
@@ -43,7 +44,9 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-     
+      <li class="nav-item">
+      <h5 class="userlogado" ><i class="fas fa-user" id="useri"></i><?php echo $logado;?></h5>
+      </li>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -72,8 +75,8 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
+       Sidebar Menu -->
+       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
                 <a href="../../dash.php" class="nav-link">
@@ -91,19 +94,19 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/cadescolas.php" class="nav-link">
+                <a href="cadescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/cadturmas.php" class="nav-link">
+                <a href="cadturmas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/cadalunos.php" class="nav-link">
+                <a href="cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -121,19 +124,19 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="pdfs/relatoriogeralalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/buscaporescola.php" class="nav-link">
+                <a href="buscaporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/buscaporescolaeturma.php" class="nav-link">
+                <a href="buscaporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
@@ -150,25 +153,25 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartconsolidadoview.php" class="nav-link">
+                <a href="../charts/chartconsolidadoview.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartporescola.php" class="nav-link">
+                <a href="chartporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartporescolaeturma.php" class="nav-link">
+                <a href="chartporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartcompescolas.php" class="nav-link">
+                <a href="chartcompescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Comparativo por Escola</p>
                 </a>
@@ -177,7 +180,7 @@ while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
             
           </li>
           <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="back/exit.php" class="nav-link">
                   <i class="far fas fa-power-off"></i>
                   <p>Sair</p>
                 </a>

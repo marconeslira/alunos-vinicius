@@ -1,4 +1,5 @@
 <?php
+require "../back/fontkey.php";
 require ('../back/conect.php');
 require ('../FPDF/fpdf.php');
 
@@ -18,7 +19,9 @@ $pdf->SetFont('Arial','B',12);
 $pdf->Image('../../../dist/img/vllogomenu.png');
 $pdf->Cell(150,10,utf8_decode('Secretaria Mun. de Educação da Lagoa dos Gatos - PE'),0,0);
 $pdf->SetFont('Arial','',9);
-$pdf->Cell(20,10,'Impresso: '. $data,0,1);
+$pdf->Cell(20,2,utf8_decode('Usuário: '). $logado,0,1);
+$pdf->Cell(134,3,'',0,0);
+$pdf->Cell(20,10,'Impresso em: '. $data,0,1);
 $pdf->SetFont('Arial','B',14);
 $pdf->Cell(196,10,utf8_decode('Relatório de Alunos da ' . $nomeescola),'B',1);
 $pdf->ln(5);

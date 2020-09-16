@@ -1,4 +1,5 @@
 <?php
+require "../examples/back/fontkey.php";
 require "../examples/back/conect.php";
 
 $nomeescola = $_POST['nomeescola'];
@@ -145,19 +146,19 @@ $qtd = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/cadescolas.php" class="nav-link">
+                <a href="../examples/cadescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Escolas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/cadturmas.php" class="nav-link">
+                <a href="../examples/cadturmas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Turmas</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/cadalunos.php" class="nav-link">
+                <a href="../examples/cadalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Alunos</p>
                 </a>
@@ -175,19 +176,19 @@ $qtd = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="../examples/pdfs/relatoriogeralalunos.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/buscaporescola.php" class="nav-link">
+                <a href="../examples/buscaporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/buscaporescolaeturma.php" class="nav-link">
+                <a href="../examples/buscaporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
@@ -204,25 +205,25 @@ $qtd = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartconsolidadoview.php" class="nav-link">
+                <a href="chartconsolidadoview.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartporescola.php" class="nav-link">
+                <a href="../examples/chartporescola.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Escola</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartporescolaeturma.php" class="nav-link">
+                <a href="../examples/chartporescolaeturma.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Por Turma</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/chartcompescolas.php" class="nav-link">
+                <a href="../examples/chartcompescolas.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Comparativo por Escola</p>
                 </a>
@@ -231,7 +232,7 @@ $qtd = mysqli_num_rows($res);
             
           </li>
           <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="../examples/back/exit.php" class="nav-link">
                   <i class="far fas fa-power-off"></i>
                   <p>Sair</p>
                 </a>

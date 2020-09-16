@@ -1,3 +1,7 @@
+<?php
+require "back/fontkey.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

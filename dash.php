@@ -1,5 +1,7 @@
 <?php
+require 'pages/examples/back/fontkey.php';
 require 'pages/examples/back/conect.php';
+
 
 //busca qtd escolas cadastradas
 $sql = "SELECT * FROM escola";
@@ -58,6 +60,9 @@ $qtdalunos = mysqli_num_rows($res);
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item">
+      <h5 class="userlogado" ><i class="fas fa-user" id="useri"></i><?php echo $logado;?></h5>
       </li>
       
      <!-- <li class="nav-item d-none d-sm-inline-block">
@@ -299,7 +304,7 @@ $qtdalunos = mysqli_num_rows($res);
             
           </li>
           <li class="nav-item">
-                <a href="index.html" class="nav-link">
+                <a href="pages/examples/back/exit.php" class="nav-link">
                   <i class="far fas fa-power-off"></i>
                   <p>Sair</p>
                 </a>
