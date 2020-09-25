@@ -131,7 +131,7 @@ while ($row_tur = mysqli_fetch_assoc($resultado_tur)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -160,7 +160,7 @@ while ($row_tur = mysqli_fetch_assoc($resultado_tur)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartconsolidadoview.php" class="nav-link">
+                <a href="chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>

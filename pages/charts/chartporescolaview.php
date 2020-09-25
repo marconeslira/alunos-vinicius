@@ -2,9 +2,10 @@
 require "../examples/back/fontkey.php";
 require "../examples/back/conect.php";
 
+$anoletivo = $_POST['anoletivo'];
 $nomeescola = $_POST['nomeescola'];
 
-$result_esc = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola'";
+$result_esc = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
 $res = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 $qtd = mysqli_num_rows($res);
 ?>
@@ -42,28 +43,28 @@ $qtd = mysqli_num_rows($res);
           require '../examples/back/conect.php';
           
           //buscando quantidade de baixo peso
-          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola'";
+          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
           $consulta = mysqli_query($con, $sql);
           $res = mysqli_num_rows($consulta);     
           
           //buscando quantidade de risco baixo peso
-          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola'";
+          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
           $consulta1 = mysqli_query($con, $sql1);
           $res1 = mysqli_num_rows($consulta1);  
 
           
           //buscando quantidade de Eutrófico
-          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola'";
+          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
           $consulta2 = mysqli_query($con, $sql2);
           $res2 = mysqli_num_rows($consulta2); 
 
           //buscando quantidade de Obesidade
-          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola'";
+          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
           $consulta3 = mysqli_query($con, $sql3);
           $res3 = mysqli_num_rows($consulta3); 
 
           //buscando quantidade de risco baixo peso
-          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola'";
+          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola' AND anoletivoaluno = '$anoletivo'";
           $consulta4 = mysqli_query($con, $sql4);
           $res4 = mysqli_num_rows($consulta4);  
           ?>
@@ -176,7 +177,7 @@ $qtd = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../examples/pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="../examples/buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -205,7 +206,7 @@ $qtd = mysqli_num_rows($res);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="chartconsolidadoview.php" class="nav-link">
+                <a href="../examples/chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>

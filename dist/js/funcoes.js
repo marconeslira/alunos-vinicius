@@ -77,7 +77,7 @@ if((percentil == "-p3") || (percentil == "p3")){
 }else if(percentil == "+p97"){
   estnutricional = "Obesidade";
 };
-document.getElementById('estnutri').setAttribute("value", estnutricional);
+document.getElementById('estnutricional').setAttribute("value", estnutricional);
 }
 
 //chamada tabela filtros

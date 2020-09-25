@@ -122,7 +122,7 @@ $resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -151,7 +151,7 @@ $resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartconsolidadoview.php" class="nav-link">
+                <a href="chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
@@ -283,7 +283,7 @@ $resultado_tur= mysqli_query($con, $result_tur) or die(mysqli_error($con));
                     <td><?php echo $row_tur["anoletivo"];?></td>
                     <td>
                     <a href="editcadturmas.php?id=<?php echo $row_tur['idturma']?>" class="btn-sm btn-outline-info ">Alterar</a>
-                    <!--<a href="excluiturmas.php?id=<?php //echo $row_tur['idturma']?>" class="btn-sm btn-outline-danger " onclick="return false;">Excluir</a>-->
+                    <a id="excluir" onclick="return confirm('Deseja Realmente EXCLUIR este Registro?' )" class="btn-sm btn-outline-danger"  href="back/procexcluiturma.php?id=<?php echo $row_tur['idturma'];?>">Excluir</a>
                     </td>
                   </tr>
                     <?php } ?>

@@ -4,13 +4,14 @@ require "../examples/back/conect.php";
 
 $nomeescola1 = $_POST['nomeescola1'];
 $nomeescola2 = $_POST['nomeescola2'];
+$anoletivo = $_POST['anoletivo'];
 
 //pega total de alunos de cada escola
-$result_esc1 = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola1'";
+$result_esc1 = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
 $res1 = mysqli_query($con, $result_esc1) or die(mysqli_error($con));
 $qtd1 = mysqli_num_rows($res1);
 
-$result_esc2 = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola2'";
+$result_esc2 = "SELECT * FROM aluno WHERE escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
 $res2 = mysqli_query($con, $result_esc2) or die(mysqli_error($con));
 $qtd2 = mysqli_num_rows($res2);
 ?>
@@ -45,31 +46,31 @@ $qtd2 = mysqli_num_rows($res2);
         var data = google.visualization.arrayToDataTable([
                  
           <?php
-          require '../examples/back/conect.php';
+          
           
           //buscando quantidade de baixo peso
-          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola1'";
+          $sql = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
           $consulta = mysqli_query($con, $sql);
           $res = mysqli_num_rows($consulta);     
           
           //buscando quantidade de risco baixo peso
-          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola1'";
+          $sql1 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
           $consulta1 = mysqli_query($con, $sql1);
           $res1 = mysqli_num_rows($consulta1);  
 
           
           //buscando quantidade de Eutrófico
-          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola1'";
+          $sql2 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
           $consulta2 = mysqli_query($con, $sql2);
           $res2 = mysqli_num_rows($consulta2); 
 
           //buscando quantidade de Obesidade
-          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola1'";
+          $sql3 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
           $consulta3 = mysqli_query($con, $sql3);
           $res3 = mysqli_num_rows($consulta3); 
 
           //buscando quantidade de risco baixo peso
-          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola1'";
+          $sql4 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola1' AND anoletivoaluno = '$anoletivo'";
           $consulta4 = mysqli_query($con, $sql4);
           $res4 = mysqli_num_rows($consulta4);  
           ?>
@@ -103,31 +104,31 @@ $qtd2 = mysqli_num_rows($res2);
         var data = google.visualization.arrayToDataTable([
                  
           <?php
-          require '../examples/back/conect.php';
+        
           
           //buscando quantidade de baixo peso
-          $sql6 = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola2'";
+          $sql6 = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
           $consulta6 = mysqli_query($con, $sql6);
-          $res6 = mysqli_num_rows($consulta);     
+          $res6 = mysqli_num_rows($consulta6);     
           
           //buscando quantidade de risco baixo peso
-          $sql7 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola2'";
+          $sql7 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
           $consulta7 = mysqli_query($con, $sql7);
           $res7 = mysqli_num_rows($consulta7);  
 
           
           //buscando quantidade de Eutrófico
-          $sql8 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola2'";
+          $sql8 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
           $consulta8 = mysqli_query($con, $sql8);
           $res8 = mysqli_num_rows($consulta8); 
 
           //buscando quantidade de Obesidade
-          $sql9 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola2'";
+          $sql9 = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
           $consulta9 = mysqli_query($con, $sql9);
           $res9 = mysqli_num_rows($consulta9); 
 
           //buscando quantidade de risco baixo peso
-          $sql10 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola2'";
+          $sql10 = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND escolaaluno = '$nomeescola2' AND anoletivoaluno = '$anoletivo'";
           $consulta10 = mysqli_query($con, $sql10);
           $res10 = mysqli_num_rows($consulta10);  
           ?>
@@ -241,7 +242,7 @@ $qtd2 = mysqli_num_rows($res2);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../examples/pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="../examples/buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -270,7 +271,7 @@ $qtd2 = mysqli_num_rows($res2);
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="chartconsolidadoview.php" class="nav-link">
+                <a href="../examples/chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
@@ -317,6 +318,7 @@ $qtd2 = mysqli_num_rows($res2);
         <div class="row mb-2">
           <div class="col-sm-6">
             <h4><strong>Gráficos Comparativos entre Escolas</strong></h4>
+            <h5><strong>Ano Letivo: </strong><?php echo $anoletivo?></h4>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">

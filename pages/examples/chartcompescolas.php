@@ -121,7 +121,7 @@ $resultado_esc2 = mysqli_query($con, $result_esc2) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -150,7 +150,7 @@ $resultado_esc2 = mysqli_query($con, $result_esc2) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartconsolidadoview.php" class="nav-link">
+                <a href="chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
@@ -247,7 +247,11 @@ $resultado_esc2 = mysqli_query($con, $result_esc2) or die(mysqli_error($con));
                     ?>
                         <option value="<?php echo $nomeescola2; ?>"><?php echo $nomeescola2; ?></option>
                     <?php } ?>
-                  </select>
+                  </select><br>
+                  <div class="form-group">
+                <label>*Digite o Ano Letivo</label><br>
+                  <input type="number" name="anoletivo" min="2020" placeholder="a partir de 2020" required="">
+              </div>
               </div>
             </form>  
             <!-- /.card-body -->

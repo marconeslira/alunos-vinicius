@@ -1,8 +1,7 @@
 <?php
 require "back/fontkey.php";
 require "back/conect.php";
-//select for scholl
-$result_esc = "SELECT * FROM escola ORDER BY nomeescola ASC";
+$result_esc = "SELECT * FROM escola order by nomeescola asc";
 $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 ?>
 
@@ -12,7 +11,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CadEscolas</title>
+  <title>Relatório Geral por Ano Letivo</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,8 +23,9 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
- <!--Import dataTables.css-->
+  <!--Import dataTables.css-->
  <link href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -49,7 +49,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="main-sidebar sidebar-dark-secundary elevation-4">
     <!-- Brand Logo -->
     <a href="../../dash.php" class="brand-link">
       <img src="../../dist/img/vllogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -69,8 +69,8 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
         </div>
       </div>
 
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
+       Sidebar Menu -->
+       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
                 <a href="../../dash.php" class="nav-link">
@@ -118,7 +118,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="buscarelgeral.php" class="nav-link">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -193,12 +193,12 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cadastro de Escolas</h1>
+            <h1>Relatório Geral por Ano Letivo</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="../../dash.php">Dashboard</a></li>
-              <li class="breadcrumb-item active">Cadastro de Escolas</li>
+              <li class="breadcrumb-item active">Relatório Geral por Ano Letivo</li>
             </ol>
           </div>
         </div>
@@ -219,57 +219,23 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
                <i class="fas fa-minus"></i></button>
               </div> -->
             </div>
-            <form action="./back/proccadescolas.php" method="POST">  <!--formulario inicio-->
+            <form action="pdfs/relatoriogeralalunos.php" method="POST">  <!--formulario inicio-->
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">* Nome da Escola</label>
-                <input type="text" id="inputName" name="nomeescola" class="form-control" required>
+                <label>*Digite o Ano Letivo</label><br>
+                  <input type="number" name="anoletivo" min="2020" placeholder="a partir de 2020" required="">
               </div>
-              </div>
-            
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
           <div class="row">
             <div class="col-md-12">
-              <input type="submit" value="salvar" class="btn btn-outline-primary float-right">
+              <input type="submit" value="Enviar" class="btn btn-outline-primary float-right">
             </div>
           </div>
         </div>
       </div><br>
-      <div class="col-md-11">
-        <div class="card card-primary">
-        <div class="card-header">
-          <h3 class="card-title">Escolas Cadastradas</h3>
-        </div> 
-        <div class="card-body">
-          <table class="table table-striped" id="minhaTabela">
-              <thead class="bg-info">
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Escola</th>
-                  <th>Ação</th>
-                </tr>
-              </thead>
-              <tbody>
-              <?php
-                    while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {
-                        
-                ?>
-                  <tr>
-                    <td><?php echo $row_esc["idescola"];?></td>
-                    <td><?php echo $row_esc["nomeescola"];?></td>
-                    <td>
-                    <a href="editcadescolas.php?id=<?php echo $row_esc["idescola"];?>" class="btn-sm btn-outline-info">Alterar</a>
-                    <a id="excluir" onclick="return confirm('Deseja Realmente EXCLUIR este Registro?' )" class="btn-sm btn-outline-danger"  href="back/procexcluiescola.php?id=<?php echo $row_esc['idescola'];?>">Excluir</a>
-                    </td>
-                  </tr>
-                    <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>   <!-- fim da tabela cadastrados -->
-    </form>  <!--formulario fim-->
+          </form>  <!--formulario fim-->
     </section>
   
     <!-- /.content -->
@@ -295,6 +261,7 @@ $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));
 <script src="../../dist/js/funcoes.js"></script>
 <!-- jQuery 
 <script src="../../plugins/jquery/jquery.min.js"></script>-->
+
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

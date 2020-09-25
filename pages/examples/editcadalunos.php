@@ -137,7 +137,7 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pdfs/relatoriogeralalunos.php" class="nav-link">
+                <a href="buscarelgeral.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Geral Alunos</p>
                 </a>
@@ -166,7 +166,7 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../charts/chartconsolidadoview.php" class="nav-link">
+                <a href="chartconsolidado.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Consolidado</p>
                 </a>
@@ -300,12 +300,23 @@ while ($row_cad = mysqli_fetch_assoc($resultado_cad)) {
                 <input disabled type="text" id="imc"  class="form-control" value="<?php echo $imc;?>">
               </div>
               <div class="form-group">
-                <label for="inputName">Percentil <a href="curvaspercent.php" target="blank" class="btn-sm btn-outline-info">Consultar Curva</a></label>
-                <input type="text" id="percentil" name="percentil" class="form-control" onblur="calestnutri()" value="<?php echo $percentil;?>">
+              <label>Percentil <a href="curvaspercent.php" target="blank" class="btn-sm btn-outline-info">Consultar Curva</a></label>
+                  <select onblur="calestnutri()" id="percentil" name="percentil" class="form-control select2" style="width: 100%;" >
+                    <option selected="selected"><?php echo $percentil;?></option>
+                    <option>-p3</option>
+                    <option>p3</option>
+                    <option>p3-p5</option>
+                    <option>p3-p15</option>
+                    <option>p15</option>
+                    <option>p15-p50</option>
+                    <option>p50-p85</option>
+                    <option>p85-p97</option>
+                    <option>+p97</option>
+                  </select>
               </div>
               <div class="form-group">
                 <label for="inputName">Estado Nutricional</label>
-                <input disabled type="text" id="estnutri"  class="form-control" value="<?php echo $estnutricional;?>">
+                <input disabled type="text" id="estnutricional"  class="form-control" value="<?php echo $estnutricional;?>">
               </div>
               </div>
 

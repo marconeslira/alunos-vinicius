@@ -3,11 +3,14 @@ require "../back/fontkey.php";
 require ('../back/conect.php');
 require ('../FPDF/fpdf.php');
 
+//pegando o ano letivo digitado
+$anoletivo = $_POST['anoletivo'];
+
 //pega data atual do sistema
 $data = Date("d/m/Y H:i:s");
 
 //selecionando dados do BD
-$sql = "SELECT * FROM aluno ORDER BY nomealuno";
+$sql = "SELECT * FROM aluno  WHERE anoletivoaluno = '$anoletivo' ORDER BY nomealuno";
 $res = mysqli_query($con, $sql);
 
 //instanciando o objeto da classe fpdf
@@ -22,7 +25,7 @@ $pdf->Cell(20,2,utf8_decode('Usuário: '). $logado,0,1);
 $pdf->Cell(220,3,'',0,0);
 $pdf->Cell(20,10,'Impresso em: '. $data,0,1);
 $pdf->SetFont('Arial','B',16);
-$pdf->Cell(281,10,utf8_decode('Relatório Geral de Alunos'),'B',1);
+$pdf->Cell(281,10,utf8_decode('Relatório Geral de Alunos - Ano Letivo: ') . $anoletivo,'B',1);
 $pdf->ln(5);
 
 //cabeçalho da exibição de dados
@@ -61,31 +64,31 @@ $pdf->Cell(20,8,'TOTAIS:',0,1);
 
 //EXIBINDO TOTAIS
 //quantidade de Baixo Peso
-$contando = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso'";
+$contando = "SELECT * FROM aluno WHERE estnutricional = 'Baixo Peso' AND anoletivoaluno = '$anoletivo'";
 $rest = mysqli_query($con, $contando);
 $cont1 = mysqli_num_rows($rest);
 $pdf->Cell(40,10,'Baixo Peso: '.$cont1,0,0);
 
 //quantidade Eutrófico/Risco de Baixo Peso
-$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso'";
+$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco Baixo Peso' AND anoletivoaluno = '$anoletivo'";
 $rest = mysqli_query($con, $contando);
 $cont2 = mysqli_num_rows($rest);
 $pdf->Cell(45,10,'Risc. Baixo Peso: '.$cont2,0,0);
 
 //quantidade Eutrófico
-$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico'";
+$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico' AND anoletivoaluno = '$anoletivo'";
 $rest = mysqli_query($con, $contando);
 $cont3 = mysqli_num_rows($rest);
 $pdf->Cell(35,10,utf8_decode('Eutrófico: '.$cont3),0,0);
 
 //quantidade obesidade
-$contando = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade'";
+$contando = "SELECT * FROM aluno WHERE estnutricional = 'Obesidade' AND anoletivoaluno = '$anoletivo'";
 $rest = mysqli_query($con, $contando);
 $cont4 = mysqli_num_rows($rest);
 $pdf->Cell(35,10,'Obesidade: '.$cont4,0,0);
 
 //quantidade Eutrófico/Risco de Obesidade
-$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade'";
+$contando = "SELECT * FROM aluno WHERE estnutricional = 'Eutrófico/Risco de Obesidade' AND anoletivoaluno = '$anoletivo'";
 $rest = mysqli_query($con, $contando);
 $cont5 = mysqli_num_rows($rest);
 $pdf->Cell(45,10,'Risc. Obesidade: '.$cont5,0,0);
