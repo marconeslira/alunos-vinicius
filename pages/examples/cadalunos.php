@@ -219,7 +219,7 @@ $resultado_cad = mysqli_query($con, $result_cad) or die(mysqli_error($con));
             <div class="card-body">
               <div class="form-group">
                 <label>* Escola</label>
-                  <select name="escola" id="escolas" class="form-control select2" style="width: 100%;" required>
+                  <select name="escola" id="escolas" class="form-control select2" style="width: 100%;" required="" autofocus>
                     <option selected="selected">Selecione</option>
                     <?php
                         while ($row_esc = mysqli_fetch_assoc($resultado_esc)) {

@@ -4,8 +4,6 @@ require "back/conect.php";
 
 $id = $_GET['id'];
 
-echo $id;
-
 //select for scholl
 $result_esc = "SELECT * FROM escola order by nomeescola asc";
 $resultado_esc = mysqli_query($con, $result_esc) or die(mysqli_error($con));

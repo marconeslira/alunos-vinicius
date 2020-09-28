@@ -10,7 +10,7 @@ $anoletivo = $_POST['anoletivo'];
 $data = Date("d/m/Y H:i:s");
 
 //selecionando dados do BD
-$sql = "SELECT * FROM aluno  WHERE anoletivoaluno = '$anoletivo' ORDER BY nomealuno";
+$sql = "SELECT * FROM aluno  WHERE anoletivoaluno = '$anoletivo' ORDER BY turmaaluno";
 $res = mysqli_query($con, $sql);
 
 //instanciando o objeto da classe fpdf

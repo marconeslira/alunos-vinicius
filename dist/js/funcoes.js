@@ -57,7 +57,7 @@ function calcimc(){
 var peso = document.getElementById('peso').value;
 var altura = document.getElementById('altura').value;
 var peso1 = peso / (altura * altura);
-var imc = parseFloat(peso1.toFixed(1));
+var imc = parseFloat(peso1.toFixed(2));
 document.getElementById('imc').setAttribute("value", imc);
 }
 
